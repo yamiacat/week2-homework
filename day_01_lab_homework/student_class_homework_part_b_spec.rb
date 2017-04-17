@@ -17,7 +17,7 @@ class ClassHomeworkTest < MiniTest::Test
   end
 
   def test_sportsteam_class_is_a_class
-    assert_equal(Class, SportsTeam.class)
+    assert_kind_of(SportsTeam, @team_1)
   end
 
   def test_sportsteam_name_getter
