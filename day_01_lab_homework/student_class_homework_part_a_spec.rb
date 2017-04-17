@@ -45,4 +45,18 @@ class ClassHomeworkTest < MiniTest::Test
     assert_equal(2, @student_1.set_student_cohort(2))
   end
 
+  def test_if_student_can_talk
+    assert(@student_1.talk)
+  end
+
+  def test_if_student_can_love_a_language
+    assert_equal("I love Ruby", @student_1.whaddya_think_of("Ruby"))
+  end
+
+  def test_if_student_can_love_a_language_not_hardcoded
+    assert_equal("I love Java", @student_2.whaddya_think_of("Java"))
+  end
+
+
+
 end

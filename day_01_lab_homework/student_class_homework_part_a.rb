@@ -21,5 +21,13 @@ class Student
     @cohort = new_cohort
   end
 
+  def talk
+    return "True knowledge exists in knowing that you know nothing."
+  end
+
+  def whaddya_think_of(word)
+    return "I love #{word}"
+  end
+
 
 end
