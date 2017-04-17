@@ -21,15 +21,15 @@ class ClassHomeworkTest < MiniTest::Test
   end
 
   def test_sportsteam_name_getter
-    assert_equal("Red Dwarf Posse", @team_1.get_team_name)
+    assert_equal("Red Dwarf Posse", @team_1.team_name)
   end
 
   def test_players_getter
-    assert_equal(["Hicks", "Hudson", "Vasquez", "Drake"], @team_2.get_players)
+    assert_equal(["Hicks", "Hudson", "Vasquez", "Drake"], @team_2.players)
   end
 
   def test_coach_getter
-    assert_equal("Holly", @team_1.get_coach)
+    assert_equal("Holly", @team_1.coach)
   end
 
   def test_coach_setter
