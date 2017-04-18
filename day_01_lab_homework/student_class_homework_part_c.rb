@@ -1,5 +1,5 @@
 class Library
-   attr_accessor :books
+  attr_accessor :books
 
   def initialize(books)
     @books = books
@@ -28,7 +28,18 @@ class Library
         student_name: "",
         date: ""
       }
-    })
+      })
+  end
+
+  def change_book_rental_details(title_to_be_amended, name, due_date)
+    for volume in books
+      if volume[:title] == title_to_be_amended
+        volume[:rental_details] = {
+          student_name: name,
+          date: due_date
+        }
+      end
+    end
   end
 
 

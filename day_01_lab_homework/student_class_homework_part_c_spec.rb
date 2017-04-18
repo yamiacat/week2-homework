@@ -89,16 +89,14 @@ class ClassHomeworkTest < MiniTest::Test
   end
 
 
-#WHY ON EARTH ISN'T THE BELOW FAILING
+  def test_change_book_rental_details
+    @library.change_book_rental_details("v", "Izzy", "05/05/17")
 
- # def test_change_book_rental_details
- #   @library.change_book_rental_details("v", "Izzy", "05/05/2017")
- #
- #   assert_equal({
- #     student_name: "Izzy",
- #     date: "05/05/17"
- #     }, get_rental_details("v"))
- # end
+    assert_equal({
+      student_name: "Izzy",
+      date: "05/05/17"
+      }, @library.get_rental_details("v"))
+  end
 
 
 end
