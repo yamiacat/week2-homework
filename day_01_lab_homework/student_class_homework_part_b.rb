@@ -28,9 +28,9 @@ class SportsTeam
   end
 
   def update_score(match_result)
-    @points += 1 if match_result == "win"
-    @points -= 1 if match_result == "lose"
-    @points += 0 if match_result == "draw"
+    @points += 1 if match_result.downcase == "win"
+    @points -= 1 if match_result.downcase == "lose"
+    @points += 0 if match_result.downcase == "draw"
   end
 
 end
