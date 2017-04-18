@@ -61,14 +61,14 @@ class ClassHomeworkTest < MiniTest::Test
     }], @library.books)
   end
 
-  def test_find_book_by_title
+  def test_find_book_by_title_and_return_details
     assert_equal({
       title: "v",
       rental_details: {
         student_name: "Mina",
         date: "03/03/17"
       }
-    }, @library.find_book_by_title("v"))
+    }, @library.find_book_by_title_and_return_details("v"))
   end
 
 
@@ -79,23 +79,26 @@ class ClassHomeworkTest < MiniTest::Test
    }, @library.get_rental_details("breakfast_of_champions"))
  end
 
- def test_add_book_to_library
-   @library.add_book_to_library("baudolino")
-   assert_equal(true, @library.has_value?("baudolino"))
-   assert_equal(true, @library.has_value?("v"))
- end
+  def test_find_book_by_title_and_return_true
+    assert_equal(true, @library.find_book_by_title("v"))
+  end
+
+  def test_add_book_to_library
+    @library.add_book_to_library("baudolino")
+    assert_equal(true, @library.find_book_by_title("baudolino"))
+  end
 
 
-#WHY ON EARTH ISN'T THE BELOW FAILING!?
+#WHY ON EARTH ISN'T THE BELOW FAILING
 
- def test_change_book_rental_details
-   @library.change_book_rental_details("v", "Izzy", "05/05/2017")
-
-   assert_equal({
-     student_name: "Izzy",
-     date: "05/05/17"
-     }, get_rental_details("v"))
- end
+ # def test_change_book_rental_details
+ #   @library.change_book_rental_details("v", "Izzy", "05/05/2017")
+ #
+ #   assert_equal({
+ #     student_name: "Izzy",
+ #     date: "05/05/17"
+ #     }, get_rental_details("v"))
+ # end
 
 
 end
