@@ -11,6 +11,14 @@ class Room
 
   def queue_song(song_to_be_queued)
     @playlist << song_to_be_queued
+    @occupants.each do |guest|
+      if guest.favourite_song == song_to_be_queued
+        return "Choon!"
+      else
+        next
+      end
+    end
+
   end
 
 
