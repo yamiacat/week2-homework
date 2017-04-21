@@ -5,12 +5,12 @@ require_relative("../song.rb")
 class TestSong < MiniTest::Test
 
   def setup
-    @song = Song.new("Motorhead", "Ace of Spades")
+    @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
   end
 
   def test_song_has_title
-    assert_equal("Ace of Spades", @song.title)
+    assert_equal("Ace of Spades", @song1.title)
   end
 
   def test_song_has_artist
