@@ -4,20 +4,26 @@ require_relative("../office.rb")
 require_relative("../guest.rb")
 require_relative("../room.rb")
 require_relative("../song.rb")
+require_relative("../drink.rb")
 
 class TestOffice < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Elizabeth", 50, @song1)
-    @guest2 = Guest.new("Helen", 20, @song2)
-    @guest3 = Guest.new("Bob", 10, @song1)
+    @whisky = Drink.new(7)
+    @beer = Drink.new(4)
+    @guest1 = Guest.new("Elizabeth", 50, @song1, @whisky)
+    @guest2 = Guest.new("Helen", 20, @song2, @beer)
+    @guest3 = Guest.new("Bob", 10, @song1, @beer)
     @room1 = Room.new("The Rawk Room", 20)
     @room2 = Room.new("The Ballad Room", 1)
-    @office = Office.new
+    @office = Office.new(18)
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
   end
 
+  def test_entry_fee_can_be_set
+    assert_equal(18, @office.entry_fee)
+  end
 
   def test_office_can_check_guest_in
     @office.check_guest_in(@room1, @guest1)

@@ -4,15 +4,18 @@ require_relative("../room.rb")
 require_relative("../song.rb")
 require_relative("../office.rb")
 require_relative("../guest.rb")
+require_relative("../drink.rb")
 
 class TestRoom < MiniTest::Test
 
   def setup
-    @office = Office.new
+    @office = Office.new(18)
+    @whisky = Drink.new(7)
+    @beer = Drink.new(4)
     @room1 = Room.new("The Rawk Room", 20)
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
-    @guest1 = Guest.new("Elizabeth", 50, @song1)
+    @guest1 = Guest.new("Elizabeth", 50, @song1, @whisky)
 
   end
 
@@ -41,5 +44,14 @@ class TestRoom < MiniTest::Test
     @office.check_guest_in(@room1, @guest1)
     assert_equal("Choon!", @room1.queue_song(@song1))
   end
+
+  def test_room_has_earnings_total
+    assert_equal(0, @room1.earnings)
+  end
+
+  # def test_room_adds_round_of_drinks_to_earnings
+  #   @room1.drinks_round
+  #   assert_equal(3, @room1.earnings)
+  # end
 
 end

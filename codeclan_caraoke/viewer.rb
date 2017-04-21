@@ -14,39 +14,49 @@ class Viewer
   def greeting
     puts "\n
     \n
-    Welcome to SimCodeClanCaraoke - the premier simulator of code school based karaoke knock offs! \n
+Welcome to CimCodeClanCaraoke, the best simulator of CodeClan-based karaoke! \n
+     .          .                         .          .
+    / \\        / \\                       / \\        / \\
+   /   \\      /   \\                     /   \\      /   \\
+  /   . \\    /   . \\       _____       /   . \\    /   . \\
+ /   / \\_\\  /   / \\_\\     /    /      /   / \\_\\  /   / \\_\\
+ |  |       |  |          /    /      |  |       |  |
+ |  |       |  |         /    /_____  |  |       |  |
+ |  |       |  |        /          /  |  |       |  |
+ |  |       |  |       /_____     /   |  |       |  |
+ |  |       |  |            /    /    |  |       |  |
+ |  |  ___  |  |  ___      /   /      |  |   ___ |  |   ___
+ \\  \\./  /  \\  \\./  /      /  /        \\  \\./  /  \\  \\./  /
+  \\     /    \\     /       / /          \\     /    \\     /
+   \\_._/      \\_._/        /             \\_._/      \\_._/
 
-    .               .                     ________          / \\
-  /   \\            / \\                   \\        \\        /   \\
- /      \\        /  .  \\       _____      \\  ____  \\     /   .  \\
-/  |  \\   \\    /   / \\___\\    /    /      |  |  \\   |   /   / \\___\\
-|  |   \\   |   |  |          /    /       |  |   |  |   |  |
-|  |    \\  |   |  |         /    /_____   |  |   |  |   |  |
-|  |____|  |   |  |        /          /   |  |   |  |   |  |
-|  ______  |   |  |       /_____     /    |  |   |  |   |  |
-|  |    |  |   |  |            /    /     |  |   |  |   |  |
-|  |    |  |   |  |   ___      /   /      |  |   /  |   |  |   ___
-|  |    |  |   \\   \\./  /      /  /       |  |__/   |    \\  \\./  /
-/  \\   /   \\     \\     /       / /        /        /      \\     /
-\\./     \\./        \\./          /        /________/        \\ . /
+
 
 \n"
   end
 
   def get_room_name
-    puts "What would you like your CodeClan Caraoke bar to be called?"
-    return gets.chomp
+    puts "What would you like this CodeClanCaraoke room to be called?"
+    return gets.chomp.to_s
   end
 
 
   def get_room_size
-    puts "How many people can that room fit?"
-    return gets.chomp
+    puts""
+    puts "How many people can fit in that room?"
+    input = gets.chomp.to_i
+    if input == 0
+      puts""
+      puts "Pick a proper number, wiseass!"
+      get_room_size
+    else
+      return input
+    end
   end
 
 
   def confirm_room_details(room)
-    puts "Your CodeClan Caraoke room is called #{room.room_name} and has a capacity of #{room.capacity}."
+    puts "Alrighty then! Your CodeClanCaraoke room is called #{room.room_name} and has a capacity of #{room.capacity}."
   end
 
 
@@ -54,7 +64,7 @@ class Viewer
 
 
   def end_session
-    puts "Right, you've sung Bohemian Rhapsody - that's it for the night. Sling yer hook."
+    puts "Right, you've sung Bohemian Rhapsody - that's it for the night. Sling yer hook!"
   end
 
 

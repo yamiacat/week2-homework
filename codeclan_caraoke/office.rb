@@ -1,7 +1,9 @@
 class Office
 
-  def initialize
-    @entry_fee = 20
+  attr_reader :entry_fee
+
+  def initialize(entry_fee)
+    @entry_fee = entry_fee
 
   end
 

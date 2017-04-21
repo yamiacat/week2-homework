@@ -3,7 +3,7 @@ require_relative("./song.rb")
 require_relative("./office.rb")
 require_relative("./guest.rb")
 require_relative("./viewer.rb")
-
+require_relative("./drink.rb")
 
 class SimCaraoke
 

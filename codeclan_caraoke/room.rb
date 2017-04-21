@@ -1,5 +1,6 @@
 class Room
 
+  attr_accessor :earnings
   attr_reader :room_name, :occupants, :playlist, :capacity
 
   def initialize(room_name, capacity)
@@ -7,6 +8,7 @@ class Room
     @occupants = []
     @playlist = []
     @capacity = capacity
+    @earnings = 0
   end
 
   def queue_song(song_to_be_queued)
@@ -18,8 +20,11 @@ class Room
         next
       end
     end
-
   end
+
+  # def drinks_round
+  #
+  # end
 
 
 end
