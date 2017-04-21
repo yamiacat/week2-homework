@@ -11,12 +11,23 @@ class SimCaraoke
     @viewer = viewer
 
     @viewer.greeting
+
     room_1_name = @viewer.get_room_name
     room_1_capacity = @viewer.get_room_size
+    entrance_fee = @viewer.get_entrance_fee
 
     room_1 = Room.new(room_1_name, room_1_capacity)
+    office = Office.new(entrance_fee)
 
-    @viewer.confirm_room_details(room_1)
+    @viewer.confirm_room_details(room_1, office)
+
+    soft_drink_name = @viewer.get_soft_drink_name
+    pint_name = @viewer.get_pint_name
+    hard_liquour_name = @viewer.get_hard_liquour_name
+
+    soft_drink = Drink.new(2, soft_drink_name)
+    pint = Drink.new(4, pint_name)
+    hard_liquour = Drink.new(7, hard_liquour_name)
   end
 
 
@@ -34,6 +45,6 @@ class SimCaraoke
 end
 
 
-simcaraoke = SimCaraoke.new(Viewer.new)
+cimcaraoke = SimCaraoke.new(Viewer.new)
 
-simcaraoke.run
+# cimcaraoke.run

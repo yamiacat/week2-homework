@@ -9,11 +9,11 @@ require_relative("../drink.rb")
 class TestOffice < MiniTest::Test
 
   def setup
-    @whisky = Drink.new(7)
-    @beer = Drink.new(4)
-    @guest1 = Guest.new("Elizabeth", 50, @song1, @whisky)
-    @guest2 = Guest.new("Helen", 20, @song2, @beer)
-    @guest3 = Guest.new("Bob", 10, @song1, @beer)
+    @hard_liquour = Drink.new(7, "whisky", 5)
+    @pint = Drink.new(4, "beer", 4)
+    @guest1 = Guest.new("Elizabeth", 50, @song1, "hard liquour")
+    @guest2 = Guest.new("Helen", 20, @song2, "pint")
+    @guest3 = Guest.new("Bob", 10, @song1, "soft drink")
     @room1 = Room.new("The Rawk Room", 20)
     @room2 = Room.new("The Ballad Room", 1)
     @office = Office.new(18)

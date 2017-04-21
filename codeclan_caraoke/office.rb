@@ -1,6 +1,6 @@
 class Office
 
-  attr_reader :entry_fee
+  attr_accessor :entry_fee
 
   def initialize(entry_fee)
     @entry_fee = entry_fee

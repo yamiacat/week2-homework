@@ -15,7 +15,8 @@ class Room
     @playlist << song_to_be_queued
     @occupants.each do |guest|
       if guest.favourite_song == song_to_be_queued
-        return "Choon!"
+        puts "#{guest.name} says 'Choon!'"
+# NOT SURE HOW TO GET THIS TO OUTPUT YET
       else
         next
       end

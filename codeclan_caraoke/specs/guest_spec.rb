@@ -9,8 +9,8 @@ class TestGuest < MiniTest::Test
   def setup
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
-    @whisky = Drink.new(7)
-    @guest1 = Guest.new("Elizabeth", 50, @song1, @whisky)
+    @hard_liquour = Drink.new(7, "whisky", 4)
+    @guest1 = Guest.new("Elizabeth", 50, @song1, "hard liquour")
   end
 
   def test_guest_has_name
@@ -26,7 +26,7 @@ class TestGuest < MiniTest::Test
   end
 
   def test_guest_has_preferred_drink
-    assert_equal(@whisky, @guest1.favourite_drink)
+    assert_equal("hard liquour", @guest1.favourite_drink)
   end
 
 

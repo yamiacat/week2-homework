@@ -10,13 +10,15 @@ class TestRoom < MiniTest::Test
 
   def setup
     @office = Office.new(18)
-    @whisky = Drink.new(7)
-    @beer = Drink.new(4)
+    @hard_liquour = Drink.new(7, "whisky", 6)
+    @pint = Drink.new(4, "beer", 3)
     @room1 = Room.new("The Rawk Room", 20)
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
-    @guest1 = Guest.new("Elizabeth", 50, @song1, @whisky)
-
+    @song3 = Song.new("Alice in Chains", "Rooster")
+    @guest1 = Guest.new("Elizabeth", 50, @song1, "hard liquour")
+    @guest2 = Guest.new("Helen", 20, @song2, "pint")
+    @guest3 = Guest.new("Bob", 10, @song1, "soft drink")
   end
 
   def test_room_has_name
@@ -40,14 +42,22 @@ class TestRoom < MiniTest::Test
     assert_equal(20, @room1.capacity)
   end
 
-  def test_guests_react_to_their_favourite_song
-    @office.check_guest_in(@room1, @guest1)
-    assert_equal("Choon!", @room1.queue_song(@song1))
-  end
+  # def test_guests_react_to_their_favourite_song
+  #   @office.check_guest_in(@room1, @guest1)
+  #   assert_equal("Choon!", @room1.queue_song(@song1))
+  # end
 
   def test_room_has_earnings_total
     assert_equal(0, @room1.earnings)
   end
+
+  def test_room_rotates_playlist_on_turn
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.queue_song(@song3)
+  end
+
+
 
   # def test_room_adds_round_of_drinks_to_earnings
   #   @room1.drinks_round
