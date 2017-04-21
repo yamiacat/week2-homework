@@ -6,7 +6,7 @@ require_relative("../song.rb")
 class TestRoom < MiniTest::Test
 
   def setup
-    @room1 = Room.new("The Rawk Room")
+    @room1 = Room.new("The Rawk Room", 20)
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
   end
@@ -28,6 +28,8 @@ class TestRoom < MiniTest::Test
     assert_equal("Ace of Spades", @room1.playlist[0].title)
   end
 
-
+  def test_room_has_capacity
+    assert_equal(20, @room1.capacity)
+  end
 
 end
