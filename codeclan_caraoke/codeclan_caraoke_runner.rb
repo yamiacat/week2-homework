@@ -58,12 +58,39 @@ class CimCaraoke
 
     d10 = [1,2,3,4,5,6,7,8,9,10]
     random_starting_cash = (d10.shuffle.first + 5) * 10
-    random_favourite_song = song_library[d10.shuffle.first]
-    random_favourite_drink = drinks_array[(d10.shuffle.first)/3]
+    random_favourite_song = song_library.shuffle.first
+    random_favourite_drink = drinks_array.shuffle.first
+
+    @guest1 = Guest.new("Matt", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest2 = Guest.new("Ally", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest3 = Guest.new("Eoghan", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest4 = Guest.new("Richard", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest5 = Guest.new("Nick", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest6 = Guest.new("Gill", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest7 = Guest.new("Marilena", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest8 = Guest.new("Irma", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest9 = Guest.new("Louise", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest10 = Guest.new("Louis", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest11 = Guest.new("Alex", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest12 = Guest.new("Charlie", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest13 = Guest.new("Johnny", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest14 = Guest.new("Mike", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest15 = Guest.new("Chris", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest16 = Guest.new("Daniel", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest17 = Guest.new("Paul", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest18 = Guest.new("Mungo", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest19 = Guest.new("Simon", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest20 = Guest.new("Craig", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest21 = Guest.new("Sandy", random_starting_cash, random_favourite_song, random_favourite_drink)
+    @guest22 = Guest.new("Matthew", random_starting_cash, random_favourite_song, random_favourite_drink)
 
 
+  guest_array = [@guest1, @guest2, @guest3, @guest4, @guest5,
+     @guest6, @guest7, @guest8, @guest9, @guest10, @guest11,
+    @guest12, @guest13, @guest14, @guest15, @guest16, @guest17,
+    @guest18, @guest19, @guest20, @guest21, @guest22]
 
-  end
+  @viewer.get_custom_guests(guest_array, drinks_array)
 
 
   def run
@@ -76,6 +103,13 @@ class CimCaraoke
 
 
 
+
+
+
+
+
+
+  end
 
 end
 

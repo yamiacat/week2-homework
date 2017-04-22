@@ -49,7 +49,7 @@ Welcome to CodeClanCaraokeCim, the best simulator of CodeClan-based karaoke! \n
     input = gets.chomp.to_i
     if input == 0
       puts ""
-      puts "Pick a proper number, wiseass!"
+      puts "PICK A PROPER NUMBER, WISEASS!"
       get_room_size
     else
       return input
@@ -63,7 +63,7 @@ Welcome to CodeClanCaraokeCim, the best simulator of CodeClan-based karaoke! \n
     input = gets.chomp.to_i
     if input == 0
       puts""
-      puts "Pick a proper number, wiseass!"
+      puts "PICK A PROPER NUMBER, WISEASS!"
       get_entrance_fee
     else
       return input
@@ -157,7 +157,7 @@ Welcome to CodeClanCaraokeCim, the best simulator of CodeClan-based karaoke! \n
     puts "Don't worry, you'll be able to jack up the prices\nand water down the drinks later!"
   end
 
- def get_song_library(song_library)
+  def get_song_library(song_library)
     puts ""
     puts "CodeClanCaraokeCim now comes with literally #{song_library.count} song titles\nin the default library!"
     puts "Would you like to add a custom song? (Y/N)"
@@ -179,11 +179,58 @@ Welcome to CodeClanCaraokeCim, the best simulator of CodeClan-based karaoke! \n
       puts "#{title} by #{artist} has been added to the library!"
       get_song_library(song_library)
     else
-      puts "That was a yes or no question, bub."
+      puts ""
+      puts "THAT WAS A YES OR NO QUESTION, BUB."
       get_song_library(song_library)
     end
+  end
 
- end
+
+  def get_custom_guests(guest_array, drinks_array)
+    puts ""
+    puts "CodeClanCaraokeCim now has #{guest_array.count} pre-generated customers that may or\nmay not be named after Cohort 12 and its tutors."
+    puts ""
+    puts "Would you like to add some extra guests?\n(I must warn you, it's kinda a hassle) (Y/N)"
+    print "> "
+    input = gets.chomp.downcase
+    if input == "n"
+      puts "Phew! Alrighty then!"
+      return
+    elsif
+      input == "y"
+      puts "Who would you like to add?"
+      print "> "
+      name = gets.chomp.capitalize
+      puts "How much money do they start with?"
+      print "> "
+      money = gets.chomp.to_i
+      puts "What's the title of their favourite song? (I did warn you it'd be a hassle!)"
+      print "> "
+      title = gets.chomp
+      puts "...and who is it by?"
+      print "> "
+      artist = gets.chomp
+      their_favourite_song = Song.new(artist, title)
+      puts "Type a number to select their favourite drink:"
+      puts "1 for #{drinks_array[0].drink_name}."
+      puts "2 for #{drinks_array[1].drink_name}."
+      puts "3 for #{drinks_array[2].drink_name}."
+      drink_selection = gets.chomp.to_i
+      guest_to_be_added = Guest.new(name, money, their_favourite_song, drinks_array[drink_selection-1])
+      guest_array << guest_to_be_added
+      puts ""
+      puts "#{name} has been added to the game!\nThey like #{artist} and #{drinks_array[drink_selection-1].drink_name} and have £#{money} to spend!"
+      get_custom_guests(guest_array, drinks_array)
+    else
+      puts ""
+      puts "THAT WAS A YES OR NO QUESTION, BUB."
+      get_custom_guests(guest_array, drinks_array)
+    end
+  end
+
+
+
+end
 
 
 
@@ -215,7 +262,3 @@ Welcome to CodeClanCaraokeCim, the best simulator of CodeClan-based karaoke! \n
 #               /_ `/
 #              (  `/
 #               `-'
-
-
-
-end
