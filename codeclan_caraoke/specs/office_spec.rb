@@ -12,7 +12,7 @@ class TestOffice < MiniTest::Test
     @hard_liquour = Drink.new(7, "whisky", 5)
     @pint = Drink.new(4, "beer", 4)
     @guest1 = Guest.new("Elizabeth", 50, @song1, "hard liquour")
-    @guest2 = Guest.new("Helen", 20, @song2, "pint")
+    @guest2 = Guest.new("Helen", 40, @song2, "pint")
     @guest3 = Guest.new("Bob", 10, @song1, "soft drink")
     @room1 = Room.new("The Rawk Room", 20)
     @room2 = Room.new("The Ballad Room", 1)
@@ -68,6 +68,21 @@ class TestOffice < MiniTest::Test
 
   def test_club_rejects_poor_people
     assert_equal("You can't afford this - beat it!", @office.check_guest_in(@room1, @guest3))
+  end
+
+  def test_guest_can_be_added_to_rooms_guest_queue
+    @office.add_guest_to_room_queue(@guest3, @room1)
+    assert_equal(@guest3, @room1.guest_queue[0])
+  end
+
+  def test_office_adds_entry_fee_to_takings
+    @office.check_guest_in(@room2, @guest1)
+    assert_equal(18, @office.takings)
+  end
+
+  def test_guest_money_decreases_when_entering
+    @office.check_guest_in(@room2, @guest1)
+    assert_equal(32, @guest1.money)
   end
 
 end

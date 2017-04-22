@@ -42,23 +42,40 @@ class TestRoom < MiniTest::Test
     assert_equal(20, @room1.capacity)
   end
 
-  # def test_guests_react_to_their_favourite_song
-  #   @office.check_guest_in(@room1, @guest1)
-  #   assert_equal("Choon!", @room1.queue_song(@song1))
-  # end
+#THIS TEST SHOULD PROLLY CHANGE TO BE WHEN SONG SUNG
+  def test_guests_react_to_their_favourite_song_being_queued
+    @office.check_guest_in(@room1, @guest1)
+    assert_equal("Elizabeth says 'Choon!'", @room1.queue_song(@song1))
+  end
 
   def test_room_has_earnings_total
     assert_equal(0, @room1.earnings)
   end
 
+  def test_room_has_guest_queue
+    @room1.guest_queue << @guest3
+    assert_equal(@guest3, @room1.guest_queue[0])
+  end
+
+
   def test_room_rotates_playlist_on_turn
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
+    @room1.take_turn
+    assert_equal(@song2, @room1.playlist[0])
   end
 
+  def test_room_rotates_playlist_on_turn_multiple_turns
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.queue_song(@song3)
+    @room1.take_turn
+    @room1.take_turn
+    assert_equal(@song3, @room1.playlist[0])
+  end
 
-
+#COME BACK TO THIS AND GET IT WORKING
   # def test_room_adds_round_of_drinks_to_earnings
   #   @room1.drinks_round
   #   assert_equal(3, @room1.earnings)
