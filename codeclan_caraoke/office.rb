@@ -32,5 +32,16 @@ class Office
     room_to_queue_for.guest_queue << guest_to_queue
   end
 
+  def get_room_status(target_room)
+    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!"
+  end
+
+  def get_room_queue_status(target_room)
+    if target_room.guest_queue.count == 1
+      return "There is 1 person queuing for #{target_room.room_name}."
+    else
+      return "There are #{target_room.guest_queue.count} people queuing for #{target_room.room_name}."
+    end
+  end
 
 end

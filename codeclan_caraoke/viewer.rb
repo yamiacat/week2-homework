@@ -15,27 +15,33 @@ class Viewer
     puts "\n
     \n
 Welcome to CodeClanCaraokeCim, the best simulator of CodeClan-based karaoke! \n
-     .          .                         .          .
-    / \\        / \\                       / \\        / \\
-   /   \\      /   \\                     /   \\      /   \\
-  /   . \\    /   . \\       _____       /   . \\    /   . \\
- /   / \\_\\  /   / \\_\\     /    /      /   / \\_\\  /   / \\_\\
- |  |       |  |          /    /      |  |       |  |
- |  |       |  |         /    /_____  |  |       |  |
- |  |       |  |        /          /  |  |       |  |
- |  |       |  |       /_____     /   |  |       |  |
- |  |       |  |            /    /    |  |       |  |
- |  |  ___  |  |  ___      /   /      |  |   ___ |  |   ___
- \\  \\./  /  \\  \\./  /      /  /        \\  \\./  /  \\  \\./  /
-  \\     /    \\     /       / /          \\     /    \\     /
-   \\_._/      \\_._/        /             \\_._/      \\_._/
-
-
+       .          .                         .          .
+      / \\        / \\                       / \\        / \\
+     /   \\      /   \\                     /   \\      /   \\
+    /   . \\    /   . \\       _____       /   . \\    /   . \\
+   /   / \\_\\  /   / \\_\\     /    /      /   / \\_\\  /   / \\_\\
+   |  |       |  |          /    /      |  |       |  |
+   |  |       |  |         /    /_____  |  |       |  |
+   |  |       |  |        /          /  |  |       |  |
+   |  |       |  |       /_____     /   |  |       |  |
+   |  |       |  |            /    /    |  |       |  |
+   |  |  ___  |  |  ___      /   /      |  |   ___ |  |   ___
+   \\  \\./  /  \\  \\./  /      /  /        \\  \\./  /  \\  \\./  /
+    \\     /    \\     /       / /          \\     /    \\     /
+     \\_._/      \\_._/        /             \\_._/      \\_._/
 
 \n"
+puts "Choose your level of realism:"
+puts ""
+puts "[0] Basic    [1] Challenging    [2] Hyper-realistic    [4] Hardcore"
+puts ""
+print "> "
+gets
+puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
   def get_room_name
+    puts ""
     puts "What would you like this CodeClanCaraokeCim room to be called?"
     print "> "
     return gets.chomp.to_s.upcase

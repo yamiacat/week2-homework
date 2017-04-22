@@ -75,6 +75,8 @@ class TestRoom < MiniTest::Test
     assert_equal(@song3, @room1.playlist[0])
   end
 
+
+
 #COME BACK TO THIS AND GET IT WORKING
   # def test_room_adds_round_of_drinks_to_earnings
   #   @room1.drinks_round

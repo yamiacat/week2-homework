@@ -85,4 +85,36 @@ class TestOffice < MiniTest::Test
     assert_equal(32, @guest1.money)
   end
 
+  def test_office_can_get_room_to_report_status
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest2)
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.queue_song(@song3)
+    assert_equal("Elizabeth is singing Ace of Spades!", @office.get_room_status(@room1))
+  end
+
+  def test_office_can_get_room_to_report_status_after_a_turn
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest2)
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.queue_song(@song3)
+    @room1.take_turn
+    assert_equal("Helen is singing Birdhouse In Your Soul!", @office.get_room_status(@room1))
+  end
+
+  def test_office_can_get_room_to_report_queue_status
+    @office.add_guest_to_room_queue(@guest3, @room1)
+    assert_equal("There is 1 person queuing for The Rawk Room.", @office.get_room_queue_status(@room1))
+  end
+
+  def test_office_can_get_room_to_report_queue_status_larger_queue
+    @office.add_guest_to_room_queue(@guest2, @room1)
+    @office.add_guest_to_room_queue(@guest3, @room1)
+    assert_equal("There are 2 people queuing for The Rawk Room.", @office.get_room_queue_status(@room1))
+  end
+
+
+
 end
