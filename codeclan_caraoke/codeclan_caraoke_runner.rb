@@ -111,15 +111,17 @@ class CimCaraoke
   guests_already_queuing.each{|guest|
   @office.add_guest_to_room_queue(guest, @room_1)}
 
-  @viewer.summarise_starting_conditions(@office, @room_1)
-
+  @viewer.starting_conditions(@office, @room_1)
+  @viewer.summarise_turn_conditions(@office, @room_1)
 
 
   end
 
   def run
-    while @playlist[0].title != "Bohemian Rhapsody"
-
+    while @room_1.playlist[0].title != "Bohemian Rhapsody"
+      @viewer.game_turn_option
+      @room_1.take_turn
+      @viewer.summarise_turn_conditions(@office, @room_1)
     end
 
     @viewer.end_session
@@ -140,4 +142,4 @@ end
 
 cimcaraoke = CimCaraoke.new(Viewer.new)
 
-# cimcaraoke.run
+cimcaraoke.run

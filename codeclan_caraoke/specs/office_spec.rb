@@ -87,66 +87,64 @@ class TestOffice < MiniTest::Test
     assert_equal(32, @guest1.money)
   end
 
-  def test_office_can_get_room_to_report_status
+  def test_office_can_get_room_to_report_song_status
     @office.check_guest_in(@room1, @guest1)
     @office.check_guest_in(@room1, @guest2)
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
-    assert_equal("Elizabeth is singing Ace of Spades!
-    The Rawk Room has made £0.", @office.get_room_status(@room1))
+    assert_equal("Elizabeth is singing Ace of Spades while an audience of 1 watches!", @office.get_room_song_status(@room1))
   end
 
-  def test_office_can_get_room_to_report_status_after_a_turn
+  def test_office_can_get_room_to_report_song_status_after_a_turn
     @office.check_guest_in(@room1, @guest1)
     @office.check_guest_in(@room1, @guest2)
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
     @room1.take_turn
-    assert_equal("Helen is singing Birdhouse In Your Soul!
-    The Rawk Room has made £11.", @office.get_room_status(@room1))
+    assert_equal("Helen is singing Birdhouse In Your Soul while an audience of 1 watches!", @office.get_room_song_status(@room1))
   end
+
 
   def test_office_can_get_room_to_report_queue_status
     @office.add_guest_to_room_queue(@guest3, @room1)
     assert_equal("There is 1 person queuing for The Rawk Room.", @office.get_room_queue_status(@room1))
   end
 
-  def test_office_can_get_room_to_report_queue_status_larger_queue
+  def test_office_gets_room_to_report_larger_queue_status
     @office.add_guest_to_room_queue(@guest2, @room1)
     @office.add_guest_to_room_queue(@guest3, @room1)
     assert_equal("There are 2 people queuing for The Rawk Room.", @office.get_room_queue_status(@room1))
   end
 
-  def test_room_earnings_are_added_to_takings_when_reported
+  def test_room_earnings_are_added_to_takings_when_money_reported
     @office.check_guest_in(@room1, @guest1)
     @room1.queue_song(@song1)
     @room1.take_turn
-    @office.get_room_status(@room1)
+    @office.get_room_money_status(@room1)
     assert_equal(25, @office.takings)
     assert_equal(0, @room1.earnings)
   end
 
-  def test_office_report_includes_broke_guests
+  def test_office_report_for_guest_drinking
     @office.check_guest_in(@room1, @guest1)
     @office.check_guest_in(@room1, @guest4)
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.take_turn
-    assert_equal("Cath is singing Birdhouse In Your Soul!
-    The Rawk Room has made £7.\nCath has no more money!", @office.get_room_status(@room1))
+    assert_equal("\nCath has no more money!\nElizabeth is drinking whisky...", @office.get_room_guest_drinking_status(@room1))
   end
 
-  def test_office_report_includes_multiple_broke_guests
+  def test_office_report_works_for_multiple_broke_guests
     @office.check_guest_in(@room1, @guest1)
     @office.check_guest_in(@room1, @guest4)
     @office.check_guest_in(@room1, @guest5)
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.take_turn
-    assert_equal("Cath is singing Birdhouse In Your Soul!
-    The Rawk Room has made £7.\nCath has no more money!\nShell has no more money!", @office.get_room_status(@room1))
+    assert_equal("\nCath has no more money!\nShell has no more money!\nElizabeth is drinking whisky...", @office.get_room_guest_drinking_status(@room1))
   end
+
 
 end

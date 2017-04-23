@@ -243,16 +243,33 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     guest_array.each {|guest| puts "#{guest.name}, drinking #{guest.favourite_drink.drink_name}, carrying £#{guest.money} and looking to sing #{guest.favourite_song.artist}."}
   end
 
-  def summarise_starting_conditions(office, room)
+  def starting_conditions(office, room)
     puts ""
-    puts "Like all great works of literature, the game begins in media res..."
-    puts ""
-    puts office.get_room_status(room)
-    puts ""
-    puts office.get_room_queue_status(room)
-
+    puts "Like all great works of literature, the game begins in media res.\nThe night is starting to pick up, but all of the other staff\nhave called in sick.\nYou will have do EVERYTHING yourself!"
   end
 
+  def summarise_turn_conditions(office, room)
+    puts ""
+    puts "Right now in #{room.room_name}:"
+    puts ""
+    puts office.get_room_song_status(room)
+    puts ""
+    puts office.get_room_money_status(room)
+    puts ""
+    puts office.get_room_guest_drinking_status(room)
+    puts ""
+    puts office.get_room_queue_status(room)
+  end
+
+
+  def game_turn_option
+    puts ""
+    puts "What do you want to do this round?"
+    puts "[1] To work the front office, let people in and adjust the entry fee"
+    puts "[2] To work the bar and adjust drink prices and strength"
+    puts "[3] To work security and eject unruly or unconscious guests"
+    action_choice = gets.chomp.to_i
+  end
 
 
 
@@ -273,20 +290,21 @@ end
   # end
 
 
-#
-#   _.,_
-# ,-'.' .`-,
-# ;; '. ' `. ;` - _
-# _,-; ' ; `.  ,% .-,  -
-#   *hic*          ,_.,-'`   ';; ; : ;%'  | |   \
-# ___  _._,-`'\            `'-`'  _.,' `.   )
-# __,--`-,,`'  ,._,.-`-., _.,-.--.-,`''`  |  _|   |__
-# `---'////\ /  .-,     `-`-^--`'^`-...,,| | |.,/
-# //\)(/   `-\.-.                   | `-'
-# ( .-;                  |   |    ,.
-# `-~ ~~-.              `._.'  ,/ /
-# `~ ~~~ ~~                 /,.`)
-#                //  /
-#               /_ `/
-#              (  `/
-#               `-'
+"
+  _.,_
+,-'.' .`-,
+;; '. ' `. ;` - _
+_,-; ' ; `.  ,% .-,  -
+  *hic*          ,_.,-'`   ';; ; : ;%'  | |   \\
+___  _._,-`'\\            `'-`'  _.,' `.   )
+__,--`-,,`'  ,._,.-`-., _.,-.--.-,`''`  |  _|   |__
+`---'////\\ /  .-,     `-`-^--`'^`-...,,| | |.,/
+//\\)(/   `-\\.-.                   | `-'
+( .-;                  |   |    ,.
+`-~ ~~-.              `._.'  ,/ /
+`~ ~~~ ~~                 /,.`)
+               //  /
+              /_ `/
+             (  `/
+              `-'
+"

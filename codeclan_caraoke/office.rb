@@ -32,25 +32,32 @@ class Office
     room_to_queue_for.guest_queue << guest_to_queue
   end
 
-  def get_room_status(target_room)
+  def get_room_song_status(target_room)
+
+    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title} while an audience of #{target_room.occupants.count-1} watches!"
+  end
+
+
+  def get_room_money_status(target_room)
     @takings += target_room.earnings
+    status = "#{target_room.room_name} has made £#{target_room.earnings} this round."
+    target_room.earnings = 0
+    return status
+  end
 
-    status = "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!
-    #{target_room.room_name} has made £#{target_room.earnings}."
-
-    broke_guest_status = ""
+  def get_room_guest_drinking_status(target_room)
+    guest_drinking_status = ""
 
     target_room.occupants.each {|guest|
       if guest.money < guest.favourite_drink.price
-        broke_guest_status += "\n#{guest.name} has no more money!"
+        guest_drinking_status += "\n#{guest.name} has no more money!"
       else
-        next
+        guest_drinking_status += "\n#{guest.name} is drinking #{guest.favourite_drink.drink_name}..."
       end
     }
-
-    target_room.earnings = 0
-    return status + broke_guest_status
+    return guest_drinking_status
   end
+
 
   def get_room_queue_status(target_room)
     if target_room.guest_queue.count == 1
@@ -59,5 +66,21 @@ class Office
       return "There are #{target_room.guest_queue.count} people queuing for #{target_room.room_name}."
     end
   end
+
+  def get_room_drink_status(room)
+    drinker_status = ""
+    room.occupants.each {|drinker|
+      if singer.money >= singer.favourite_drink.price
+        singer.buy_drink
+        @earnings += singer.favourite_drink.price
+        singer.money -= singer.favourite_drink.price
+      else
+        next
+      end
+    }
+
+
+  end
+
 
 end
