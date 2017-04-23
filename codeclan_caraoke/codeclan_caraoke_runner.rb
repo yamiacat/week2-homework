@@ -70,7 +70,7 @@ class CimCaraoke
     @guest7 = Guest.new("Marilena", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
     @guest8 = Guest.new("Irma", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
     @guest9 = Guest.new("Louise", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
-    @guest10 = Guest.new("Louis", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
+    @guest10 = Guest.new("Lewis", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
     @guest11 = Guest.new("Alex", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
     @guest12 = Guest.new("Charlie", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)
     @guest13 = Guest.new("Johnny", ((d10.shuffle.first + 5) * 10), @song_library.shuffle.first, @drinks_array.shuffle.first)

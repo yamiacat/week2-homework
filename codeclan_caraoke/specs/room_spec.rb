@@ -17,7 +17,7 @@ class TestRoom < MiniTest::Test
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
     @song3 = Song.new("Alice in Chains", "Rooster")
     @guest1 = Guest.new("Elizabeth", 50, @song1, @hard_liquour)
-    @guest2 = Guest.new("Helen", 20, @song2, @pint)
+    @guest2 = Guest.new("Helen", 22, @song2, @pint)
     @guest3 = Guest.new("Bob", 10, @song1, @pint)
   end
 
@@ -91,7 +91,18 @@ class TestRoom < MiniTest::Test
     @room1.take_turn
     @room1.take_turn
     assert_equal(12, @guest1.inebriation)
-    assert_equal(6, @guest2.inebriation)
+  end
+
+
+  def test_guests_with_no_money_cant_buy_drinks
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest2)
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.take_turn
+    @room1.take_turn
+    assert_equal(3, @guest2.inebriation)
+    assert_equal(12, @guest1.inebriation)
   end
 
 

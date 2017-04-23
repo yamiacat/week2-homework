@@ -26,8 +26,13 @@ class Room
 
   def take_turn
     @occupants.each {|singer|
-      singer.buy_drink
-      @earnings += singer.favourite_drink.price
+      if singer.money >= singer.favourite_drink.price
+        singer.buy_drink
+        @earnings += singer.favourite_drink.price
+        singer.money -= singer.favourite_drink.price
+      else
+        next
+      end
     }
     @playlist.rotate!
     @occupants.rotate!
