@@ -50,6 +50,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   def get_room_size
     puts""
     puts "How many people can fit in that room?"
+    puts "(10 or less is probably a good idea!)"
     print "> "
     input = gets.chomp.to_i
     if input == 0
@@ -240,9 +241,17 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     puts ""
     puts "The guests in this game will be:"
     guest_array.each {|guest| puts "#{guest.name}, drinking #{guest.favourite_drink.drink_name}, carrying £#{guest.money} and looking to sing #{guest.favourite_song.artist}."}
-
   end
 
+  def summarise_starting_conditions(office, room)
+    puts ""
+    puts "Like all great works of literature, the game begins in media res..."
+    puts ""
+    puts office.get_room_status(room)
+    puts ""
+    puts office.get_room_queue_status(room)
+
+  end
 
 
 

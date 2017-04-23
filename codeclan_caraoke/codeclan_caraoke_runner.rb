@@ -92,13 +92,30 @@ class CimCaraoke
 
   @viewer.get_custom_guests(@guest_array, @drinks_array, @song_library)
 
-
 #SUMMARY OF EVERYTHING TO TEST ITS WORKING
+  # @viewer.summarise_song_library_and_guestlist(@song_library, @guest_array)
 
-  @viewer.summarise_song_library_and_guestlist(@song_library, @guest_array)
+#CREATE STARTING CONDITIONS FOR GAME
+  songs_to_load = @song_library.shuffle
+  songs_to_load.each{|song| @room_1.queue_song(song)}
+
+  number_in_already = (d10.shuffle.first/2)
+  number_aready_queuing = d10.shuffle.first
+
+  guests_already_inside = @guest_array.shuffle.pop(number_in_already)
+
+  guests_already_inside.each {|guest| @office.check_guest_in(@room_1, guest)}
+
+  guests_already_queuing = @guest_array.shuffle.pop(number_aready_queuing)
+
+  guests_already_queuing.each{|guest|
+  @office.add_guest_to_room_queue(guest, @room_1)}
+
+  @viewer.summarise_starting_conditions(@office, @room_1)
 
 
 
+  end
 
   def run
     while @playlist[0].title != "Bohemian Rhapsody"
@@ -116,7 +133,7 @@ class CimCaraoke
 
 
 
-  end
+
 
 end
 
