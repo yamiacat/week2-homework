@@ -98,6 +98,8 @@ class CimCaraoke
   @viewer.summarise_song_library_and_guestlist(@song_library, @guest_array)
 
 
+
+
   def run
     while @playlist[0].title != "Bohemian Rhapsody"
 

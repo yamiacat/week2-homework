@@ -9,14 +9,14 @@ require_relative("../drink.rb")
 class TestOffice < MiniTest::Test
 
   def setup
+    @office = Office.new(18)
+    @room1 = Room.new("The Rawk Room", 20)
+    @room2 = Room.new("The Ballad Room", 1)
     @hard_liquour = Drink.new(7, "whisky", 5)
     @pint = Drink.new(4, "beer", 4)
     @guest1 = Guest.new("Elizabeth", 50, @song1, @hard_liquour)
     @guest2 = Guest.new("Helen", 40, @song2, @pint)
     @guest3 = Guest.new("Bob", 10, @song1, @pint)
-    @room1 = Room.new("The Rawk Room", 20)
-    @room2 = Room.new("The Ballad Room", 1)
-    @office = Office.new(18)
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
   end
@@ -117,6 +117,13 @@ class TestOffice < MiniTest::Test
     assert_equal("There are 2 people queuing for The Rawk Room.", @office.get_room_queue_status(@room1))
   end
 
-
+  def test_room_earnings_are_added_to_takings_when_reported
+    @office.check_guest_in(@room1, @guest1)
+    @room1.queue_song(@song1)
+    @room1.take_turn
+    @office.get_room_status(@room1)
+    assert_equal(25, @office.takings)
+    assert_equal(0, @room1.earnings)
+  end
 
 end

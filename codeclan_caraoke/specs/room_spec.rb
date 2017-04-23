@@ -95,10 +95,4 @@ class TestRoom < MiniTest::Test
   end
 
 
-#COME BACK TO THIS AND GET IT WORKING
-  # def test_room_adds_round_of_drinks_to_earnings
-  #   @room1.drinks_round
-  #   assert_equal(3, @room1.earnings)
-  # end
-
 end

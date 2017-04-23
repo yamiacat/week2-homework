@@ -33,8 +33,11 @@ class Office
   end
 
   def get_room_status(target_room)
-    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!
+    @takings += target_room.earnings
+    status = "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!
     #{target_room.room_name} has made £#{target_room.earnings}."
+    target_room.earnings = 0
+    return status
   end
 
   def get_room_queue_status(target_room)
