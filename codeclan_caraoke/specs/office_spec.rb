@@ -17,6 +17,8 @@ class TestOffice < MiniTest::Test
     @guest1 = Guest.new("Elizabeth", 50, @song1, @hard_liquour)
     @guest2 = Guest.new("Helen", 40, @song2, @pint)
     @guest3 = Guest.new("Bob", 10, @song1, @pint)
+    @guest4 = Guest.new("Cath", 18, @song2, @pint)
+    @guest5 = Guest.new("Shell", 18, @song1, @hard_liquour)
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
   end
@@ -124,6 +126,27 @@ class TestOffice < MiniTest::Test
     @office.get_room_status(@room1)
     assert_equal(25, @office.takings)
     assert_equal(0, @room1.earnings)
+  end
+
+  def test_office_report_includes_broke_guests
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest4)
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.take_turn
+    assert_equal("Cath is singing Birdhouse In Your Soul!
+    The Rawk Room has made £7.\nCath has no more money!", @office.get_room_status(@room1))
+  end
+
+  def test_office_report_includes_multiple_broke_guests
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest4)
+    @office.check_guest_in(@room1, @guest5)
+    @room1.queue_song(@song1)
+    @room1.queue_song(@song2)
+    @room1.take_turn
+    assert_equal("Cath is singing Birdhouse In Your Soul!
+    The Rawk Room has made £7.\nCath has no more money!\nShell has no more money!", @office.get_room_status(@room1))
   end
 
 end

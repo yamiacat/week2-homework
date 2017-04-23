@@ -34,10 +34,22 @@ class Office
 
   def get_room_status(target_room)
     @takings += target_room.earnings
+
     status = "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!
     #{target_room.room_name} has made £#{target_room.earnings}."
+
+    broke_guest_status = ""
+
+    target_room.occupants.each {|guest|
+      if guest.money < guest.favourite_drink.price
+        broke_guest_status += "\n#{guest.name} has no more money!"
+      else
+        next
+      end
+    }
+
     target_room.earnings = 0
-    return status
+    return status + broke_guest_status
   end
 
   def get_room_queue_status(target_room)
