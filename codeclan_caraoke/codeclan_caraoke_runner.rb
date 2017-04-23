@@ -114,14 +114,36 @@ class CimCaraoke
   @viewer.starting_conditions(@office, @room_1)
   @viewer.summarise_turn_conditions(@office, @room_1)
 
-
+  @remaining_guests = @guest_array
   end
 
   def run
     while @room_1.playlist[0].title != "Bohemian Rhapsody"
-      @viewer.game_turn_option
+      @viewer.game_turn_option(@office, @room_1)
       @room_1.take_turn
       @viewer.summarise_turn_conditions(@office, @room_1)
+
+      # available_guests = @guest_array
+      # @room1.occupants.each {|guest|
+      #   if available_guests.include?(guest) == true
+      #     available_guests.delete(guest)
+      #   else
+      #     next
+      #   end}
+      #
+      # @room1.guest_queue.each {|guest|
+      #   if available_guests.include?(guest) == true
+      #     available_guests.delete(guest)
+      #   else
+      #     next
+      #   end}
+
+      d10 = [1,2,3,4,5,6,7,8,9,10]
+      number_to_join_queue = (d10.shuffle.first/2)
+      guests_joining_queue = @remaining_guests.shuffle.pop(number_to_join_queue)
+      guests_joining_queue.each{|guest|
+      @office.add_guest_to_room_queue(guest, @room_1)}
+
     end
 
     @viewer.end_session

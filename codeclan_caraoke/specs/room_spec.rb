@@ -48,6 +48,11 @@ class TestRoom < MiniTest::Test
     assert_equal("Elizabeth says 'Choon!'", @room1.queue_song(@song1))
   end
 
+  def test_guests_dont_react_to_other_song_being_queued
+    @office.check_guest_in(@room1, @guest1)
+    assert_equal(nil, @room1.queue_song(@song2))
+  end
+
   def test_room_has_earnings_total
     assert_equal(0, @room1.earnings)
   end

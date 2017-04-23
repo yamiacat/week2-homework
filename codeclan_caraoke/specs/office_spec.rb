@@ -93,7 +93,7 @@ class TestOffice < MiniTest::Test
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
-    assert_equal("Elizabeth is singing Ace of Spades while an audience of 1 watches!", @office.get_room_song_status(@room1))
+    assert_equal("Elizabeth is singing Motorhead's Ace of Spades while an audience of 1 watches!", @office.get_room_song_status(@room1))
   end
 
   def test_office_can_get_room_to_report_song_status_after_a_turn
@@ -103,7 +103,7 @@ class TestOffice < MiniTest::Test
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
     @room1.take_turn
-    assert_equal("Helen is singing Birdhouse In Your Soul while an audience of 1 watches!", @office.get_room_song_status(@room1))
+    assert_equal("Helen is singing They Might Be Giants's Birdhouse In Your Soul while an audience of 1 watches!", @office.get_room_song_status(@room1))
   end
 
 

@@ -22,6 +22,7 @@ class Room
         next
       end
     end
+    return nil
   end
 
   def take_turn

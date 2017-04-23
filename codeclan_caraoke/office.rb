@@ -34,7 +34,7 @@ class Office
 
   def get_room_song_status(target_room)
 
-    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title} while an audience of #{target_room.occupants.count-1} watches!"
+    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].artist}'s #{target_room.playlist[0].title} while an audience of #{target_room.occupants.count-1} watches!"
   end
 
 
@@ -67,20 +67,8 @@ class Office
     end
   end
 
-  def get_room_drink_status(room)
-    drinker_status = ""
-    room.occupants.each {|drinker|
-      if singer.money >= singer.favourite_drink.price
-        singer.buy_drink
-        @earnings += singer.favourite_drink.price
-        singer.money -= singer.favourite_drink.price
-      else
-        next
-      end
-    }
 
 
-  end
 
 
 end
