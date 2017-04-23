@@ -9,7 +9,7 @@ class Office
 
   def check_guest_in(room, guest)
     if guest.money < @entry_fee
-      return "You can't afford this - beat it!"
+      return "#{guest.name} is told 'You can't afford this - beat it!'"
     elsif room.occupants.count < room.capacity
        room.occupants << guest
        guest.money -= @entry_fee
@@ -33,7 +33,8 @@ class Office
   end
 
   def get_room_status(target_room)
-    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!"
+    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].title}!
+    #{target_room.room_name} has made £#{target_room.earnings}."
   end
 
   def get_room_queue_status(target_room)

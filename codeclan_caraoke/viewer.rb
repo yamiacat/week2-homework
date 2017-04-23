@@ -47,7 +47,6 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     return gets.chomp.to_s.upcase
   end
 
-
   def get_room_size
     puts""
     puts "How many people can fit in that room?"
@@ -75,7 +74,6 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       return input
     end
   end
-
 
   def confirm_room_details(room, office)
     puts ""
@@ -192,7 +190,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
 
-  def get_custom_guests(guest_array, drinks_array)
+  def get_custom_guests(guest_array, drinks_array, song_library)
     puts ""
     puts "CodeClanCaraokeCim now has #{guest_array.count} pre-generated customers that may or\nmay not be named after Cohort 12 and its tutors."
     puts ""
@@ -217,6 +215,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       print "> "
       artist = gets.chomp
       their_favourite_song = Song.new(artist, title)
+      song_library << their_favourite_song
       puts "Type a number to select their favourite drink:"
       puts "1 for #{drinks_array[0].drink_name}."
       puts "2 for #{drinks_array[1].drink_name}."
@@ -226,13 +225,27 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       guest_array << guest_to_be_added
       puts ""
       puts "#{name} has been added to the game!\nThey like #{artist} and #{drinks_array[drink_selection-1].drink_name} and have £#{money} to spend!"
-      get_custom_guests(guest_array, drinks_array)
+      get_custom_guests(guest_array, drinks_array, song_library)
     else
       puts ""
       puts "THAT WAS A YES OR NO QUESTION, BUB."
-      get_custom_guests(guest_array, drinks_array)
+      get_custom_guests(guest_array, drinks_array, song_library)
     end
   end
+
+  def summarise_song_library_and_guestlist(song_library, guest_array)
+    puts ""
+    puts "The songs in your song library are:"
+    song_library.each {|song| puts "#{song.title} by #{song.artist}" }
+    puts ""
+    puts "The guests in this game will be:"
+    guest_array.each {|guest| puts "#{guest.name}, drinking #{guest.favourite_drink.drink_name}, carrying £#{guest.money} and looking to sing #{guest.favourite_song.artist}."}
+
+  end
+
+
+
+
 
 
 

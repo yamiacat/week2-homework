@@ -25,14 +25,16 @@ class Room
   end
 
   def take_turn
+    @occupants.each {|singer|
+      singer.buy_drink
+      @earnings += singer.favourite_drink.price
+    }
     @playlist.rotate!
     @occupants.rotate!
 
   end
 
-  # def drinks_round
-  #
-  # end
+
 
 
 end

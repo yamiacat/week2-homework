@@ -16,9 +16,9 @@ class TestRoom < MiniTest::Test
     @song1 = Song.new("Motorhead", "Ace of Spades")
     @song2 = Song.new("They Might Be Giants", "Birdhouse In Your Soul")
     @song3 = Song.new("Alice in Chains", "Rooster")
-    @guest1 = Guest.new("Elizabeth", 50, @song1, "hard liquour")
-    @guest2 = Guest.new("Helen", 20, @song2, "pint")
-    @guest3 = Guest.new("Bob", 10, @song1, "soft drink")
+    @guest1 = Guest.new("Elizabeth", 50, @song1, @hard_liquour)
+    @guest2 = Guest.new("Helen", 20, @song2, @pint)
+    @guest3 = Guest.new("Bob", 10, @song1, @pint)
   end
 
   def test_room_has_name
@@ -75,6 +75,24 @@ class TestRoom < MiniTest::Test
     assert_equal(@song3, @room1.playlist[0])
   end
 
+  def test_guests_drink_on_turn
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest2)
+    @room1.queue_song(@song1)
+    @room1.take_turn
+    assert_equal(6, @guest1.inebriation)
+    assert_equal(3, @guest2.inebriation)
+  end
+
+  def test_guests_drink_on_multiple_turns
+    @office.check_guest_in(@room1, @guest1)
+    @office.check_guest_in(@room1, @guest2)
+    @room1.queue_song(@song1)
+    @room1.take_turn
+    @room1.take_turn
+    assert_equal(12, @guest1.inebriation)
+    assert_equal(6, @guest2.inebriation)
+  end
 
 
 #COME BACK TO THIS AND GET IT WORKING

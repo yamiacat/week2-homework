@@ -11,9 +11,9 @@ class TestOffice < MiniTest::Test
   def setup
     @hard_liquour = Drink.new(7, "whisky", 5)
     @pint = Drink.new(4, "beer", 4)
-    @guest1 = Guest.new("Elizabeth", 50, @song1, "hard liquour")
-    @guest2 = Guest.new("Helen", 40, @song2, "pint")
-    @guest3 = Guest.new("Bob", 10, @song1, "soft drink")
+    @guest1 = Guest.new("Elizabeth", 50, @song1, @hard_liquour)
+    @guest2 = Guest.new("Helen", 40, @song2, @pint)
+    @guest3 = Guest.new("Bob", 10, @song1, @pint)
     @room1 = Room.new("The Rawk Room", 20)
     @room2 = Room.new("The Ballad Room", 1)
     @office = Office.new(18)
@@ -67,7 +67,7 @@ class TestOffice < MiniTest::Test
   end
 
   def test_club_rejects_poor_people
-    assert_equal("You can't afford this - beat it!", @office.check_guest_in(@room1, @guest3))
+    assert_equal("Bob is told 'You can't afford this - beat it!'", @office.check_guest_in(@room1, @guest3))
   end
 
   def test_guest_can_be_added_to_rooms_guest_queue
@@ -91,7 +91,8 @@ class TestOffice < MiniTest::Test
     @room1.queue_song(@song1)
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
-    assert_equal("Elizabeth is singing Ace of Spades!", @office.get_room_status(@room1))
+    assert_equal("Elizabeth is singing Ace of Spades!
+    The Rawk Room has made £0.", @office.get_room_status(@room1))
   end
 
   def test_office_can_get_room_to_report_status_after_a_turn
@@ -101,7 +102,8 @@ class TestOffice < MiniTest::Test
     @room1.queue_song(@song2)
     @room1.queue_song(@song3)
     @room1.take_turn
-    assert_equal("Helen is singing Birdhouse In Your Soul!", @office.get_room_status(@room1))
+    assert_equal("Helen is singing Birdhouse In Your Soul!
+    The Rawk Room has made £11.", @office.get_room_status(@room1))
   end
 
   def test_office_can_get_room_to_report_queue_status
