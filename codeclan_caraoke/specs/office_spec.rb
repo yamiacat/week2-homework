@@ -42,13 +42,13 @@ class TestOffice < MiniTest::Test
 
   def test_office_can_check_guest_out
     @office.check_guest_in(@room1, @guest1)
-    @office.check_guest_out(@room1, @guest1)
+    @office.kick_guest_out_by_name(@room1, "Elizabeth")
     assert_equal([], @room1.occupants)
 
   end
 
   def test_office_returns_error_when_guest_not_found
-    assert_equal("That person is not in this room.", @office.check_guest_out(@room1, @guest1))
+    assert_equal("That person is not in this room.", @office.kick_guest_out_by_name(@room1, "Elizabeth"))
   end
 
   def test_office_can_move_guest_between_rooms

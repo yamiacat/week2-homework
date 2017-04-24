@@ -1,7 +1,7 @@
 class Room
 
-  attr_accessor :earnings, :guest_queue
-  attr_reader :room_name, :occupants, :playlist, :capacity
+  attr_accessor :earnings, :guest_queue, :occupants
+  attr_reader :room_name, :playlist, :capacity
 
   def initialize(room_name, capacity)
     @room_name = room_name

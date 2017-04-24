@@ -19,12 +19,19 @@ class Office
     end
   end
 
-  def check_guest_out(room, guest)
-    room.occupants.include?(guest) ? room.occupants.delete(guest) : "That person is not in this room."
+  def kick_guest_out_by_name(room, ejectee_name)
+    room.occupants.each {|guest|
+      if guest.name == ejectee_name
+        room.occupants.delete(guest)
+        return "#{guest.name} has been kicked out!"
+      else
+        next
+      end    }
+      return "That person is not in this room."
   end
 
   def move_guest(room_to_move_out_of, guest, room_to_move_to)
-    check_guest_out(room_to_move_out_of, guest)
+    kick_guest_out_by_name(room_to_move_out_of, guest.name)
     check_guest_in(room_to_move_to, guest)
   end
 

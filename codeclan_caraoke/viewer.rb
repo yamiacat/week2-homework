@@ -564,8 +564,21 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       puts "Welcome to the security office"
       puts ""
       puts office.get_room_guest_drinking_status(room)
+      puts ""
+      puts "Who would you like to throw out of #{room.room_name}?"
+      print "> "
+      ejectee = gets.chomp
+      office.kick_guest_out_by_name(room, ejectee)
+      puts "#{ejectee} has been kicked out of #{room.room_name}."
 
-      input = gets.chomp.to_i
+      # room.occupants.each {|guest|
+      #   if guest.name == ejectee
+      #     room.occupants.delete(guest)
+      #     puts "#{guest.name} has been kicked out of #{room.room_name}."
+      #   else
+      #     next
+      #   end
+      # }
     end
 
 
