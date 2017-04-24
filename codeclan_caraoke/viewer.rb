@@ -392,9 +392,10 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     puts "Like all great works of literature, the game begins in media res.\n\nThe night is starting to pick up, but all of the other staff\nhave called in sick.\n\nYou will have do EVERYTHING yourself!"
     puts ""
     puts "Press enter to begin, or, sometimes, inexplicably, CRASH."
+
     gets.chomp
   end
-
+#A NIL IS GETTING IN HERE SOMEHOW?
   def summarise_turn_conditions(office, room)
     puts ""
     puts ""

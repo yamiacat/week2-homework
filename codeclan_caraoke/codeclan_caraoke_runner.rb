@@ -99,7 +99,7 @@ class CimCaraoke
   songs_to_load = @song_library.shuffle
   songs_to_load.each{|song| @room_1.queue_song(song)}
 
-  number_in_already = (d10.shuffle.first/2)
+  number_in_already = ((d10.shuffle.first/2)+1)
   number_aready_queuing = d10.shuffle.first
 
   guests_already_inside = @guest_array.shuffle.pop(number_in_already)
@@ -123,6 +123,7 @@ class CimCaraoke
       @room_1.take_turn
       @viewer.summarise_turn_conditions(@office, @room_1)
 
+#HOW ARE DUPLICATE PEOPLE GETTING IN THE MIX?
       # available_guests = @guest_array
       # @room1.occupants.each {|guest|
       #   if available_guests.include?(guest) == true
