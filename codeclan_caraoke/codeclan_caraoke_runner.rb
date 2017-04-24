@@ -93,7 +93,7 @@ class CimCaraoke
   @viewer.get_custom_guests(@guest_array, @drinks_array, @song_library)
 
 #SUMMARY OF EVERYTHING TO TEST ITS WORKING
-  # @viewer.summarise_song_library_and_guestlist(@song_library, @guest_array)
+  @viewer.summarise_song_library_and_guestlist(@song_library, @guest_array)
 
 #CREATE STARTING CONDITIONS FOR GAME
   songs_to_load = @song_library.shuffle

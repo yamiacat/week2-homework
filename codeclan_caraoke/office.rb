@@ -40,8 +40,11 @@ class Office
   end
 
   def get_room_song_status(target_room)
-
-    return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].artist}'s #{target_room.playlist[0].title} while an audience of #{target_room.occupants.count-1} watches!"
+    if target_room.occupants.count == 0
+      return "There is no-one singing in #{target_room.room_name}!"
+    else
+      return "#{target_room.occupants[0].name} is singing #{target_room.playlist[0].artist}'s #{target_room.playlist[0].title} while an audience of #{target_room.occupants.count-1} watches!"
+    end
   end
 
 
@@ -53,15 +56,17 @@ class Office
   end
 
   def get_room_guest_drinking_status(target_room)
-    guest_drinking_status = ""
-
-    target_room.occupants.each {|guest|
-      if guest.money < guest.favourite_drink.price
-        guest_drinking_status += "\n#{guest.name} has no more money!"
-      else
-        guest_drinking_status += "\n#{guest.name} is drinking #{guest.favourite_drink.drink_name}..."
-      end
-    }
+    if target_room.occupants.count == 0
+      return "There is no-one drinking in #{target_room.room_name}!"
+    else
+      guest_drinking_status = ""
+      target_room.occupants.each {|guest|
+        if guest.money < guest.favourite_drink.price
+          guest_drinking_status += "\n#{guest.name} has no more money!"
+        else
+          guest_drinking_status += "\n#{guest.name} is drinking #{guest.favourite_drink.drink_name}..."
+        end }
+    end
     return guest_drinking_status
   end
 

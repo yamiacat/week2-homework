@@ -77,13 +77,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
   def confirm_room_details(room, office)
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
+    7.times {puts ""}
     puts "--------|-\\-------#------------------------------------------------+
         |  }            +=====+                                    |
 --------|-/-------------|-----|------------------------------------|
@@ -95,9 +89,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
 --------|\\----------------------------|---|---|---|----------------+
         |_}                           +===========+
 "
-    puts ""
-    puts ""
-    puts ""
+    3.times {puts ""}
     puts "Alrighty then! Your CodeClanCaraokeCim room is called \"#{room.room_name}\" \nand has a capacity of #{room.capacity} people."
     puts "You are going to charge £#{office.entry_fee} to get in."
     puts ""
@@ -134,14 +126,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
   def get_pint_name
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
+    8.times {puts ""}
     puts "And what drinks are you going to serve by the pint?"
     puts "\n
 
@@ -162,11 +147,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
   def get_hard_liquour_name(room)
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
+    5.times {puts ""}
     puts "What spirits does \"#{room.room_name}\" serve?"
     puts "                        //
                        //
@@ -191,21 +172,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
   def confirm_drink_details(soft_drink, pint, hard_liquour)
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
+    15.times {puts ""}
     puts "Ok, you're serving #{soft_drink.drink_name} at £2 per drink, #{pint.drink_name} at £4 per pint,\n and #{hard_liquour.drink_name} at £7 per double to start."
     puts ""
     puts "Don't worry, you'll be able to jack up the prices\nand water down the drinks later!"
@@ -229,48 +196,11 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       artist = gets.chomp.capitalize
       song_to_be_added = Song.new(artist, title)
       song_library << song_to_be_added
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "#{title} by #{artist} has been added to the library!"
       get_song_library(song_library)
     else
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "THAT WAS A YES OR NO QUESTION, BUB."
       get_song_library(song_library)
     end
@@ -278,23 +208,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
 
 
   def get_custom_guests(guest_array, drinks_array, song_library)
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
+    17.times {puts ""}
     puts "Alrighty then!"
     puts ""
     puts "CodeClanCaraokeCim now has #{guest_array.count} pre-generated customers that may or\nmay not be named after Cohort 12 and its tutors."
@@ -303,26 +217,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     print "> "
     input = gets.chomp.downcase
     if input == "n"
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    20.times {puts ""}
       puts "Phew! Alrighty then!"
       return
     elsif
@@ -335,10 +230,10 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       money = gets.chomp.to_i
       puts "What's the title of their favourite song? (I did warn you it'd be a hassle!)"
       print "> "
-      title = gets.chomp
+      title = gets.chomp.capitalize
       puts "...and who is it by?"
       print "> "
-      artist = gets.chomp
+      artist = gets.chomp.capitalize
       their_favourite_song = Song.new(artist, title)
       song_library << their_favourite_song
       puts "Type a number to select their favourite drink:"
@@ -352,27 +247,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       puts "#{name} has been added to the game!\nThey like #{artist} and #{drinks_array[drink_selection-1].drink_name} and have £#{money} to spend!"
       get_custom_guests(guest_array, drinks_array, song_library)
     else
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "THAT WAS A YES OR NO QUESTION, BUB."
       get_custom_guests(guest_array, drinks_array, song_library)
     end
@@ -391,20 +266,12 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     puts ""
     puts "Like all great works of literature, the game begins in media res.\n\nThe night is starting to pick up, but all of the other staff\nhave called in sick.\n\nYou will have do EVERYTHING yourself!"
     puts ""
-    puts "Press enter to begin, or, sometimes, inexplicably, CRASH."
-
+    puts "Press enter to begin."
     gets.chomp
+    13.times {puts ""}
   end
-#A NIL IS GETTING IN HERE SOMEHOW?
+
   def summarise_turn_conditions(office, room)
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
     puts "Right now in #{room.room_name}:"
     puts ""
     puts office.get_room_song_status(room)
@@ -435,57 +302,14 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
     def do_nothing_useful
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "You have a bit of a tizzy and get nothing done."
       puts "Press enter to start the next round."
       gets.chomp
     end
 
     def work_front_office(office, room)
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "Welcome to the front office"
       puts ""
       puts "The entry fee is currently set to £#{office.entry_fee}."
@@ -493,7 +317,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
 #SORT QUEUE INTO PEOPLE WILLING TO PAY ENTRY FEE AND NOT
       interested_punters = []
       uninterested_punters = []
-      room.guest_queue.each {|guest| (guest.money/10) < office.entry_fee ? interested_punters << guest.name : uninterested_punters << guest.name
+      room.guest_queue.each {|guest| (guest.money/10) > office.entry_fee ? interested_punters << guest.name : uninterested_punters << guest.name
       }
       puts ""
       puts "The following potential guests would be happy to pay the entry fee: #{interested_punters.join(", ")}."
@@ -502,12 +326,14 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       puts ""
       puts "Who do you want to let in?"
       print "> "
-      admitted_guest = gets.chomp
+      admitted_guest = gets.chomp.capitalize
       room.guest_queue.each {|guest|
-        if guest.name == admitted_guest
+        if guest.name == admitted_guest && interested_punters.include?(admitted_guest)
           office.check_guest_in(room, guest)
           room.guest_queue.delete(guest)
           puts "#{guest.name} has been let in to #{room.room_name}."
+        elsif guest.name == admitted_guest && uninterested_punters.include?(admitted_guest)
+          puts "#{guest.name} says the entry fee is outrageous!"
         else
           next
         end
@@ -517,68 +343,29 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       new_entry_fee = gets.chomp.to_i
       office.entry_fee = new_entry_fee
       puts "The entry fee for next round will be £#{office.entry_fee}."
+      interested_punters = []
+      uninterested_punters = []
     end
 
     def work_bar(office, room)
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "Welcome to the bar"
-      input = gets.chomp.to_i
+      input = gets.chomp
     end
 
     def work_security(office, room)
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
-      puts ""
+    19.times {puts ""}
       puts "Welcome to the security office"
       puts ""
       puts office.get_room_guest_drinking_status(room)
       puts ""
       puts "Who would you like to throw out of #{room.room_name}?"
       print "> "
-      ejectee = gets.chomp
+      ejectee = gets.chomp.capitalize
+      18.times {puts ""}
       office.kick_guest_out_by_name(room, ejectee)
       puts "#{ejectee} has been kicked out of #{room.room_name}."
-
-      # room.occupants.each {|guest|
-      #   if guest.name == ejectee
-      #     room.occupants.delete(guest)
-      #     puts "#{guest.name} has been kicked out of #{room.room_name}."
-      #   else
-      #     next
-      #   end
-      # }
+      puts ""
     end
 
 
