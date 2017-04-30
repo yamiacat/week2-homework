@@ -241,7 +241,11 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       puts "2 for #{drinks_array[1].drink_name}."
       puts "3 for #{drinks_array[2].drink_name}."
       drink_selection = gets.chomp.to_i
-      guest_to_be_added = Guest.new(name, money, their_favourite_song, drinks_array[drink_selection-1])
+      guest_to_be_added = Guest.new({
+        "name" => name,
+        "money" => money,
+        "favourite_song" => their_favourite_song,
+        "favourite_drink" => drinks_array[drink_selection-1]})
       guest_array << guest_to_be_added
       puts ""
       puts "#{name} has been added to the game!\nThey like #{artist} and #{drinks_array[drink_selection-1].drink_name} and have £#{money} to spend!"
@@ -284,7 +288,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
   end
 
 
-  def game_turn_option(office, room)
+  def game_turn_option(office, room, drinks_array)
     puts ""
     puts "What do you want to do this round?"
     puts "[1] To work the front office, let people in and adjust the entry fee"
@@ -295,7 +299,7 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
     case action_choice
     when 0 then do_nothing_useful
     when 1 then work_front_office(office, room)
-    when 2 then work_bar(office, room)
+    when 2 then work_bar(office, room, drinks_array)
     when 3 then work_security(office, room)
     else do_nothing_useful
     end
@@ -332,8 +336,10 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
           office.check_guest_in(room, guest)
           room.guest_queue.delete(guest)
           puts "#{guest.name} has been let in to #{room.room_name}."
+          puts ""
         elsif guest.name == admitted_guest && uninterested_punters.include?(admitted_guest)
           puts "#{guest.name} says the entry fee is outrageous!"
+          puts ""
         else
           next
         end
@@ -347,10 +353,108 @@ puts "LOL, NO. I PUT THIS TOGETHER IN A WEEKEND. BASIC IT IS!"
       uninterested_punters = []
     end
 
-    def work_bar(office, room)
-    19.times {puts ""}
+    def work_bar(office, room, drinks_array)
+      19.times {puts ""}
       puts "Welcome to the bar"
-      input = gets.chomp
+      puts office.get_room_guest_drinking_status(room)
+      puts ""
+      drinks_array.each {|beverage|
+        puts "#{beverage.drink_name} currently costs £#{beverage.price} per drink, and has a strength of #{beverage.strength}."}
+        puts ""
+        puts "[1] To adjust the drink prices"
+        puts "[2] To adjust the drink strengths"
+        input = gets.chomp.to_i
+        if input == 1
+          adjust_drink_prices(drinks_array)
+        elsif input == 2
+          adjust_drink_strengths(drinks_array)
+        else
+          do_nothing_useful
+        end
+    end
+
+
+
+
+
+    def adjust_drink_prices(drinks_array)
+      19.times {puts ""}
+      puts "
+        .-""` ``` `` ```""-.
+       /'-.___________.-'\\
+      |                   |
+      |                   |
+      |    __.......__    |
+      |.-'`      ~    `'-.|
+      |::-.___~______~.-'`|
+      ;:::::.             ;
+      |:::::.             |
+      ::::::::.           |
+      |::::::::::..       |
+      |::::::::::::       |
+      |::::::::::..       |
+      |::::::::::::::     |
+      |::::::::::::::..   |
+      |:::::::::::::::::  |
+       \\:::::::::::::::../
+        '::::::::::::::.'
+      "
+      puts "What do you want to charge for #{drinks_array[0].drink_name}?"
+      print "> "
+      soft_drink_price = gets.chomp.to_i
+      19.times {puts ""}
+      puts "\n
+
+  |================|
+  (                )
+   | !!           |
+   | !!           |
+   | !!           |
+   | !!           |
+   |              |
+   |              |
+   |              |
+   |              |
+   `=============='
+   "
+      puts "What do you want to charge for #{drinks_array[1].drink_name}?"
+      print "> "
+      pint_price = gets.chomp.to_i
+      19.times {puts ""}
+      puts "                          //
+                         //
+                        //
+                       //
+                _______||
+           ,-'''       ||`-.
+          (            ||   )
+          |`-..._______,..-'|
+          |            ||   |
+          |     _______||   |
+          |,-'''_ _  ~ ||`-.|
+          |  ~ / `-.\\ ,-'\\ ~|
+          |`-...___/___,..-'|
+          |    `-./-'_ \\/_| |
+          | -'  ~~     || -.|
+          (   ~      ~   ~~ )
+           `-..._______,..-'
+  \n"
+      puts "What do you want to charge for #{drinks_array[2].drink_name}?"
+      print "> "
+      spirits_price = gets.chomp.to_i
+
+      drinks_array[0].price = soft_drink_price
+      drinks_array[1].price = pint_price
+      drinks_array[2].price = spirits_price
+
+      drinks_array.each {|beverage|
+        puts "#{beverage.drink_name} currently costs £#{beverage.price} per drink, and has a strength of #{beverage.strength}."}
+
+    end
+
+    def adjust_drink_strengths(drinks_array)
+      19.times {puts ""}
+      puts "Welcome to the bar"
     end
 
     def work_security(office, room)

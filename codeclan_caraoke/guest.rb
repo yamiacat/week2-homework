@@ -4,11 +4,11 @@ class Guest
   attr_accessor :money, :inebriation
   attr_reader :name, :favourite_song, :favourite_drink
 
-  def initialize(name, money, favourite_song, favourite_drink)
-   @money = money
-   @name = name
-   @favourite_song = favourite_song
-   @favourite_drink = favourite_drink
+  def initialize(options)
+   @money = options['money']
+   @name = options['name']
+   @favourite_song = options['favourite_song']
+   @favourite_drink = options['favourite_drink']
    @inebriation = 0
   end
 
